@@ -8,10 +8,7 @@ window.onload = () => {
 const findClass = (className) => document.querySelector(className);
 
 function pontua(position) {
-    if (position / container.clientWidth * 100 > 80) {
-        return true;
-    }
-    return false;
+    return (position / container.clientWidth * 100) > 80;
 }
 
 const mario = findClass('.mario');
@@ -73,6 +70,11 @@ const loop = setInterval(() => {
 
         sleep(160).then(() => {
             reset.style.opacity = '1';
+            document.addEventListener('keydown', (e) => {
+                if (e.key === " ") {
+                    reset.click();
+                }
+            })
             reset.onclick = () => {
                 location.reload();
             }
